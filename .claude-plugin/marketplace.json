@@ -1,0 +1,15 @@
+{
+  "name": "multitec-ua",
+  "description": "MultitecUA skills for members' agents: prepare and deploy services on Autodespliegue MT.",
+  "owner": {
+    "name": "MultitecUA",
+    "email": "info@multitecua.com"
+  },
+  "plugins": [
+    {
+      "name": "autodespliegue-mt",
+      "source": "./plugins/autodespliegue-mt",
+      "description": "Prepare a repository so it deploys on Autodespliegue MT (Cloud Run + Firestore, MultitecUA)."
+    }
+  ]
+}

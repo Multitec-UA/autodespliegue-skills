@@ -1,0 +1,7 @@
+{
+  "name": "autodespliegue-mt",
+  "version": "0.1.0",
+  "description": "Prepare a repository so it deploys on Autodespliegue MT, MultitecUA's self-service Cloud Run platform: Dockerfile, $PORT, Firestore, secrets, and a preflight check.",
+  "author": { "name": "MultitecUA" },
+  "homepage": "https://despliega.multitecua.com/guia"
+}
