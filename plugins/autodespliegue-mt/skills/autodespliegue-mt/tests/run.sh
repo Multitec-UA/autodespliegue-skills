@@ -65,6 +65,8 @@ if [ "${1:-}" = "--build" ]; then
                                                                     expect 2 "hard-coded 8080 fails the second port" --build "$T/b2"
   good "$T/b3" "require('http').createServer((q, s) => s.end('ok')).listen(process.env.PORT, '127.0.0.1');"
                                                                     expect 2 "localhost-only never answers" --build "$T/b3"
+  good "$T/b6" "require('http').createServer((q, s) => setTimeout(() => s.end('ok'), 20000)).listen(process.env.PORT, '0.0.0.0');"
+                                                                    expect 0 "slow first answer still counts as listening" --build "$T/b6"
   good "$T/b4"; sed -i 's/^USER node/RUN exit 1\nUSER node/' "$T/b4/Dockerfile"
                                                                     expect 2 "failing build" --build "$T/b4"
   good "$T/b5" "process.exit(1);"                                   ; expect 2 "container that exits" --build "$T/b5"

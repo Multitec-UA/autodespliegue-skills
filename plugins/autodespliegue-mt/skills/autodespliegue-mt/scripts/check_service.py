@@ -225,14 +225,26 @@ def probe(image, port, env, r, timeout=40):
                 r.fail(f"container exited with PORT={port} before answering (see its logs with check_service.py --build locally)")
                 return
             try:
-                urllib.request.urlopen(f"http://127.0.0.1:{host_port}/", timeout=2)
-                code = 200
+                urllib.request.urlopen(f"http://127.0.0.1:{host_port}/", timeout=3)
+                code = "HTTP 200"
             except urllib.error.HTTPError as e:
-                code = e.code
-            except (urllib.error.URLError, OSError):
+                code = f"HTTP {e.code}"
+            except (socket.timeout, TimeoutError):
+                # The request was accepted and is being worked on: something listens. Docker's
+                # port proxy, by contrast, closes at once when nothing listens inside, which
+                # lands in the branch below. A page that calls Firestore here hangs only
+                # because this machine has no Google credentials; on the platform it has.
+                code = "a slow answer (the request was accepted)"
+            except urllib.error.URLError as e:
+                if isinstance(e.reason, (socket.timeout, TimeoutError)):
+                    code = "a slow answer (the request was accepted)"
+                else:
+                    time.sleep(1)
+                    continue
+            except OSError:
                 time.sleep(1)
                 continue
-            r.ok(f"answers HTTP {code} on PORT={port} in {int(timeout - (deadline - time.time()))} s")
+            r.ok(f"listens on PORT={port}: {code} after {int(timeout - (deadline - time.time()))} s")
             return
         r.fail(f"nothing answered on PORT={port} within {timeout} s: it listens elsewhere or on localhost")
     finally:
