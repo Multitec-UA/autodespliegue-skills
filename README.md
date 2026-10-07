@@ -1,7 +1,7 @@
 # Autodespliegue MT · skills para tu agente
 
 Esto le enseña a tu agente (Claude Code u otro) a preparar tu repositorio para
-**despliega.multitecua.com**: Dockerfile, `$PORT`, Firestore, secretos, y una comprobación
+**deploy.multitecua.com**: Dockerfile, `$PORT`, Firestore, secretos, y una comprobación
 que tiene que salir bien antes de hacer push.
 
 ## Instalar en Claude Code

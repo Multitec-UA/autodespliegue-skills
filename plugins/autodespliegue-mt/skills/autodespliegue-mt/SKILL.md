@@ -1,12 +1,12 @@
 ---
 name: autodespliegue-mt
-description: Prepare a repository so it deploys on Autodespliegue MT, MultitecUA's self-service Cloud Run platform (despliega.multitecua.com). Use whenever the user wants to deploy, publish or host their app "en Multitec", "en el autodespliegue", on Cloud Run through the association, or asks why their Autodespliegue build or service fails. Covers the Dockerfile contract, the $PORT rule, the Firestore database the platform gives each service, secrets, and the preflight script that must pass before pushing.
+description: Prepare a repository so it deploys on Autodespliegue MT, MultitecUA's self-service Cloud Run platform (deploy.multitecua.com). Use whenever the user wants to deploy, publish or host their app "en Multitec", "en el autodespliegue", on Cloud Run through the association, or asks why their Autodespliegue build or service fails. Covers the Dockerfile contract, the $PORT rule, the Firestore database the platform gives each service, secrets, and the preflight script that must pass before pushing.
 ---
 
 # Autodespliegue MT
 
 MultitecUA members deploy their own services on Google Cloud Run from
-**despliega.multitecua.com**. The member connects a GitHub repository in the panel; from
+**deploy.multitecua.com**. The member connects a GitHub repository in the panel; from
 then on, **every push to the chosen branch builds and deploys by itself**. Your job is to
 make the repository satisfy the platform's contract, and to prove it with the preflight
 script before anything is pushed.

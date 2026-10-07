@@ -44,7 +44,7 @@ LOCALHOST_LISTEN = re.compile(
     r"""|\.listen\([^)]*["'](?:localhost|127\.0\.0\.1)["']""", re.I)
 SECRETY_NAME = re.compile(r"(TOKEN|SECRET|PASSWORD|PASSWD|API_?KEY|PRIVATE)", re.I)
 NAME_RE = re.compile(r"^[a-z][a-z0-9-]{1,28}[a-z0-9]$")
-RESERVED = {"www", "admin", "api", "junta", "despliega", "mail", "socios", "panel", "mcp"}
+RESERVED = {"www", "admin", "api", "junta", "despliega", "deploy", "mail", "socios", "panel", "mcp"}
 
 
 class Report:
