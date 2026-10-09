@@ -65,7 +65,7 @@ down**: the previous version keeps serving.
 ## `autodespliegue.yaml` (optional)
 
 ```yaml
-name: bot-horarios          # 3-30 chars, a-z 0-9 -, becomes bot-horarios.socios.multitecua.com
+name: bot-horarios          # 3-30 chars, a-z 0-9 -, becomes bot-horarios.run.multitecua.com
 dockerfile: ./Dockerfile
 memory: 512Mi               # 512Mi | 1Gi
 access: members             # owner | members | public (public needs Junta approval)
